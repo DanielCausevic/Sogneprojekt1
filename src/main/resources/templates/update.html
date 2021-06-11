@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Opdater Sogn</title>
+</head>
+<body>
+<div class="row">
+    <form action="/updateOnSite" th:object="${parish}" method="post">
+        <div>
+            <label>id</label>
+            <input type="text" name="code" th:value="${parish.id}">
+        </div>
+        <div>
+            <label>Sognekode</label>
+            <input type="text" name="code" th:value="${parish.code}">
+        </div>
+        <div>
+            <label>Navn</label>
+            <input type="text" name="name" th:value="${parish.name}">
+        </div>
+        <div>
+            <label>Kommune</label>
+            <input type="text" name="commune" th:value="${parish.commune.name}">
+        </div>
+        <div>
+            <label>Smittetryk</label>
+            <input type="text" name="infectionPressure" th:value="${parish.infectionPressure}">
+        </div>
+        <div>
+            <label>Dato for nedlukning</label>
+            <input type="text" name="startOfLockdown" th:value="${parish.startOfLockdown}">
+        </div>--->
+
+        <div>
+            <input type="submit" value="Opdater" role="button">
+        </div>
+    </form>
+</div>
+</body>
+</html>

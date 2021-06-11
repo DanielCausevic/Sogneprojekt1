@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sogn</title>
+</head>
+<h1>Sogne</h1>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Sognekode</th>
+            <th>Navn</th>
+            <th>Kommune</th>
+            <th>Smittetryk</th>
+            <th>Lukket ned?</th>
+            <th>Start på nedlukning</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${parishes}">
+            <td th:text="${p.code}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.commune.getName()}"></td>
+            <td th:text="${p.infectionPressure}"></td>
+            <td th:if="${p.infectionPressure >= 2.5}">x</td>
+            <td th:text="${p.startOfLockdown}"></td>
+            <td>
+                <div>
+                    <a th:href="@{'updateOnSite/' + ${p.id}}" class="btn btn-warning">Opdater</a>
+                    <a th:href="@{'deleteOnSite/' + ${p.id}}" class="btn btn-danger">Slet</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>By</th>
+            <th>Gennemsnitligt smittetryk</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${communes}">
+            <td th:text="${c.name}"></td>
+            <td th:text="${c.averageInfectionPressure}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
